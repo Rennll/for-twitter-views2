@@ -17,6 +17,7 @@
     html,
     body {
       font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
+      font-size: 16px;
     }
 
     .brand-color {
@@ -24,26 +25,39 @@
     }
 
     .btn-brand {
-      color: #fff;
-      background: #FF6600;
-      border: #FF6600;
+      --bs-btn-color: #fff;
+      --bs-btn-bg: #FF6600;
+      --bs-btn-border-color: #FF6600;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #d35400;
+      --bs-btn-hover-border-color: #c5570d;
+      --bs-btn-focus-shadow-rgb: 194, 94, 28;
+      --bs-btn-active-color: #fff;
+      --bs-btn-active-bg: #c5570d;
+      --bs-btn-active-border-color: #c7621f;
+      --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+      --bs-btn-disabled-color: #fff;
+      --bs-btn-disabled-bg: #0d6efd;
+      --bs-btn-disabled-border-color: #0d6efd;
     }
 
-    .btn-brand:hover {
-      color: #fff;
-      background: #d35400;
-      border: #c5570d;
+    .brand-color.nav-pills {
+      --bs-nav-pills-border-radius: 0.375rem;
+      --bs-nav-pills-link-active-color: #fff;
+      --bs-nav-pills-link-active-bg: #ff6600;
     }
 
-    .btn-brand:focus {
-      box-shadow: rgb(194, 94, 28);
+    .nav-link {
+      --bs-nav-link-hover-color: #d35400;
+      font-size: 18px;
+      font-weight: 700;
+      color: #44444F;
+      cursor: pointer;
     }
 
-    .btn-brand:active {
-      color: #fff;
-      background: #c5570d;
-      border: #c7621f;
-      box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    .nav-pills .nav-link.active {
+      color: #ff6600;
+      background-color: #fff;
     }
 
     .dark-90 {
@@ -54,26 +68,49 @@
       color: #171725;
     }
 
-    .title {
-      font-size: 30px;
+    .header5 {
+      font-size: 18px;
+    }
+
+    .icon-size {
+      font-size: 20px;
+    }
+
+    .fa-xmark.icon-size {
+      font-size: 15px;
     }
 
     .pointer {
       cursor: pointer;
     }
 
-    .cross {
-      /* Vector */
+    .radius50 {
+      border-radius: 50px;
+    }
 
-      position: absolute;
-      left: 18.75%;
-      right: 18.75%;
-      top: 18.75%;
-      bottom: 18.75%;
+    textarea {
+      resize: none;
+    }
 
-      /* color/brand/main */
-      background: #FF6600;
+    /* signup表格/signin表格背景亮 */
+    .signin-signup-page-input-change-backgroundcolor {
+      border-radius: 2px;
+      background: #F5F8FA;
+    }
 
+    /* signup表格/signin表格按下去不會亮 */
+    .form-control:focus {
+      box-shadow: none;
+      background: #F5F8FA;
+    }
+
+    /* signup表格/signin表格預設input只有底線*/
+    .only-underline-input {
+      border: 0;
+      outline: 0;
+      background: transparent;
+      border-bottom: 2px solid black;
+      border-radius: 0%;
     }
   </style>
   <script src="https://kit.fontawesome.com/3897908591.js" crossorigin="anonymous"></script>
@@ -82,24 +119,20 @@
 <body>
   <div class="container-lg row mx-auto flex">
     <div class="col-3 nav-left">
-      <div class="nav nav-pills flex-column">
+      <div class="nav nav-pills brand-color flex-column sticky-top">
         <img src="./alpha.png" alt="" style="width: 50px;" class="m-2">
-        <a class="nav-link brand-color pointer" href="/">
-          <span class="title fw-bold">
-            <i class="fa-solid fa-house-chimney-window"></i>&nbsp;&nbsp;首頁
-          </span>
+        <a class="nav-link active" href="/">
+          <i class="fa-solid fa-house-chimney-window"></i>&nbsp;&nbsp;首頁
         </a>
-        <a class="nav-link pointer dark-90">
-          <span class="h5 fw-bold" data-bs-toggle="modal" data-bs-target="#personal-info">
-            <i class="fa-solid fa-user"></i>&nbsp;&nbsp;個人資料
-          </span>
+        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#personal-info">
+          <i class="fa-solid fa-user"></i>&nbsp;&nbsp;個人資料
         </a>
-        <a class="nav-link pointer dark-90">
-          <span class="h5 fw-bold">
-            <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;設定
-          </span>
+        <a class="nav-link mb-3">
+          <i class="fa-solid fa-gear"></i>&nbsp;&nbsp;設定
         </a>
-        <a href="#" class="btn btn-brand" style="border-radius: 50px;">推文</a>
+        <button class="btn btn-brand radius50" data-bs-toggle="modal" data-bs-target="#post-tweet">
+          <span style="font-size: 20px;">推文</span>
+        </button>
       </div>
 
     </div>
@@ -107,16 +140,13 @@
       <ul class="list-group">
         <li class="list-group-item d-flex align-items-start">
           <img src="./avatar.png" alt="" style="width: 50px;" class="me-3">
-
           <div>
-            <p>Apple <span class="text-muted">@apple・3 小時</span></p>
+            <p>Apple&nbsp;&nbsp;<small>@apple・3 小時</small></p>
             <p>Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
-              Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.<small>This line of text is
-                meant to be treated as fine print.</small></p>
+              Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.</p>
             <div class="pointer">
               <i class="fa-solid fa-comment me-2"></i>
               13
-
               <i class="fa-solid fa-heart ms-4 me-2 pointer"></i>
               76
               </p>
@@ -124,9 +154,8 @@
         </li>
         <li class="list-group-item d-flex align-items-start">
           <img src="./avatar.png" alt="" style="width: 50px;" class="me-3">
-
           <div>
-            <p>Apple @apple・3 小時</p>
+            <p>Apple&nbsp;&nbsp;<small>@apple・3 小時</small></p>
             <p>Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
               Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.</p>
             <p>
@@ -141,7 +170,7 @@
           <img src="./avatar.png" alt="" style="width: 50px;" class="me-3">
 
           <div>
-            <p>Apple</p><small>@apple・3 小時</small>
+            <p>Apple&nbsp;&nbsp;<small>@apple・3 小時</small></p>
             <p>Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
               Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.</p>
             <p>
@@ -165,20 +194,44 @@
   <div class="modal fade" id="personal-info" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close p-1 m-1" data-bs-dismiss="modal" aria-label="Close"></button>
-          <h5 class="modal-title" id="exampleModalLabel">編輯個人資料</h5>
-          <button type="button" class="btn btn-brand">儲存</button>
-        </div>
-        <div class="modal-body">
-          <form action="/users/:id?_method=PUT">
-            <label for="name" class="form-label" style="border: 0 0 1px;">名稱</label>
-            <input type="text" id="name" name="name" class="form-control">
-          </form>
-        </div>
+        <form href="/api/users/{{user.id}}?_method=PUT" action="POST">
+          <div class="modal-header">
+            <button type="button" class="btn-close p-1 m-1" data-bs-dismiss="modal" aria-label="Close"
+              style="background: rgba(var(--bs-white-rgb),var(--bs-bg-opacity));">
+              <i class="fa-solid fa-xmark icon-size brand-color"></i>
+            </button>
+            <h5 class="modal-title" id="exampleModalLabel">編輯個人資料</h5>
+            <button type="submit" class="btn btn-brand">儲存</button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex justify-content-center align-items-center text-light" style="background: linear-gradient(0deg, rgba(23, 23, 37, 0.5), rgba(23, 23, 37, 0.5)), url('./bg.png'); background-size: cover;
+margin: -16px; z-index: -1; aspect-ratio: 640/200; width: 100% + 32px;">
+              <i class="fa-solid fa-camera icon-size pointer me-4"></i>
+              <i class="fa-solid fa-xmark icon-size pointer"></i>
+            </div>
+            <div
+              class="mb-3 border border-light border-3 rounded-circle d-flex justify-content-center align-items-center"
+              style="width: 140px; height: 140px; margin-top: -70px; background: url('/alpha.png'), #171725; background-size: cover; background-position: center; z-index: 10;">
+              <i class="fa-solid fa-camera icon-size text-light pointer"></i>
+            </div>
+            <div class="mb-3 signin-signup-page-input-change-backgroundcolor">
+              <label class="form-label" for="name"
+                style="margin-left: 10px; margin-bottom:-5px"><small>名稱</small></label>
+              <input type="text" id="name" name="name" class="form-control only-underline-input" placeholder="請輸入使用者名稱"
+                required autofocus>
+            </div>
+            <div class="my-3 signin-signup-page-input-change-backgroundcolor">
+              <label class="form-label" for="introduction"
+                style="margin-left: 10px; margin-bottom:-5px"><small>自我介紹</small></label>
+              <textarea id="introduction" name="introduction" class="form-control only-underline-input"
+                placeholder="請輸入自我介紹內容" rows="5" required autofocus></textarea>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+
 </body>
 
 </html>
